@@ -1,11 +1,14 @@
 package main
 import (
+	"api/config"
     "api/database"
     "api/router"
     "github.com/gofiber/fiber/v2"
     "github.com/gofiber/fiber/v2/middleware/cors"
     "github.com/gofiber/fiber/v2/middleware/logger"
+	"log"
 )
+
 func main() {
     database.Connect()
     app := fiber.New()
@@ -17,5 +20,10 @@ func main() {
         return c.SendStatus(404)
     })
 
-    app.Listen(":8080")
+    port := config.Config("PORT")
+
+	err := app.Listen(":" + port)
+	if err != nil {
+		log.Fatalf("Error starting the server: %v", err)
+	}
 }
