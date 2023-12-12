@@ -1,9 +1,9 @@
 package handler
 import (
- "api/database"
- "api/model"
- "github.com/gofiber/fiber/v2"
- "github.com/google/uuid"
+	"api/database"
+	"api/model"
+	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 )
 
 //Create a user
